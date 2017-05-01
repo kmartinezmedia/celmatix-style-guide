@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Nova Developer Style Guide</title>
+	<link rel="stylesheet" href="css/screen.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-lodash.js"></script>
+</head>
+<body ng-app="styleGuide" ng-controller="AppCtrl">
+	<header id="header">
+		<div id="nav" class="wrap">
+			<div class="navigation-toggle navigation-toggle-black" data-tools="navigation-toggle" data-target="#navbar" style="display: none;">
+				<span>NOVA</span>
+			</div>
+			<div id="logo"><a href="./">NOVA</a></div>
+			<div id="navbar" class="" style="display: block;">
+				<nav class="navbar">
+					<ul>
+						<li><b><a href="./">Documentation</a></b></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<div class="row" id="main">
+		<nav id="sub-nav" class="one whole">
+			<h2><a href="#header">Style Guide</a></h2>
+			<ul>
+				<strong><li><a href="">CSS</a></li></strong>
+			</ul>
+		</nav>
+		<div class="one fourth" id="side">
+			<nav id="side-nav" class="nav" style="display: block;">
+				<ul>
+					<li><a href="">Colors</a></li>
+					<li><a href="">Typography</a></li>
+					<li><a href="">Tables</a></li>
+					<li><a href="">Tabs</a></li>
+					<li><a href="">Buttons</a></li>
+					<li><a href="">Forms</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="three fourth skip-one triple-pad-left">
+			<div class="docs-section" id="typography">
+				<h6 class="docs-header">Colors</h6>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round dark-blue-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$dark-blue</code></pre></div>
+				</div>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round bright-blue-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$bright-blue</code></pre></div>
+				</div>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round light-blue-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$light-blue</code></pre></div>
+				</div>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round grey-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$grey</code></pre></div>
+				</div>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round active-grey-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$active-grey</code></pre></div>
+				</div>
+				<div class="row gap-bottom">
+					<div class="one tenth"><div class="circle round inactive-grey-bg"></div></div>
+					<div class="four fifth"><pre class="circle-text"><code>$inactive-grey</code></pre></div>
+				</div>
+			</div>
+				<div class="docs-section" id="typography">
+				<h6 class="docs-header">Typography</h6>
+					<div class="docs-example">
+						<div class="row">
+							<div class="one fifth ">
+								<select class="one whole" ng-model="selectedFont">
+									<option ng-repeat="style in heading_styles" value="{{style.class}}">{{style.label}}</option>
+								</select>
+							</div>
+							<div class="four fifth pad-left">
+								<a 	ng-click="addHeadingClass(0, 'heading-border-bottom');" class="button text-edit-button gap-right"
+										ng-class="{'active': selectedHeadingStyle[0] == 'heading-border-bottom'}"><strong>T</strong></a>
+								<a 	ng-click="addHeadingClass(1,'italic');" class="button text-italic-button gap-right"
+										ng-class="{'active': selectedHeadingStyle[1] == 'italic'}"><em>I</em></a>
+								<a 	ng-click="addHeadingClass(2,'black');" class="button gap-right"
+										ng-class="{'active': selectedHeadingStyle[2] == 'black'}"><div class="black-bg"></div></a>
+								<a 	ng-click="addHeadingClass(2,'dark-blue');" class="button gap-right"
+										ng-class="{'active': selectedHeadingStyle[2] == 'dark-blue'}"><div class="dark-blue-bg"></div></a>
+								<a 	ng-click="addHeadingClass(2,'bright-blue');" class="button gap-right"
+										ng-class="{'active': selectedHeadingStyle[2] == 'bright-blue'}"><div class="bright-blue-bg"></div></a>
+								<a 	ng-click="addHeadingClass(2,'grey');" class="button gap-right"
+										ng-class="{'active': selectedHeadingStyle[2] == 'grey'}"><div class="grey-bg"></div></a>
+							</div>
+							<div class="one whole">
+								<div class="one whole">
+									<input class="three fourth" type="text" ng-model="headingPlaceholder">
+								</div>
+							</div>
+						    <create-heading ng-repeat="heading in headings" tag="heading.tag" placeholder="{{headingPlaceholder}}" class="one whole {{selectedFont}}" ng-class="selectedHeadingStyle"></create-heading>
+						</div>
+						<div class="row">
+	    					<strong>Bolded</strong>
+								<em>Italicized</em>
+								<a>Colored</a>
+								<u>Underlined</u>
+						</div>
+					</div>
+
+
+				<!-- CODE EXAMPLE ———————————————————————————————————————— -->
+		<!-- 		<pre class="code-example"><code class="code-example-body prettyprint prettyprinted"><span class="com">&lt;!-- Standard Headings --&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h1&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h2&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h3&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h4&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h4&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h5&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h5&gt;</span><span class="pln">
+		</span><span class="tag">&lt;h6&gt;</span><span class="pln">Heading</span><span class="tag">&lt;/h6&gt;</span><span class="pln">
+
+		</span><span class="com">&lt;!-- Base type size --&gt;</span><span class="pln">
+		</span><span class="tag">&lt;p&gt;</span><span class="pln">The base type is 15px over 1.6 line height (24px)</span><span class="tag">&lt;/p&gt;</span><span class="pln">
+
+		</span><span class="com">&lt;!-- Other styled text tags --&gt;</span><span class="pln">
+		</span><span class="tag">&lt;strong&gt;</span><span class="pln">Bolded</span><span class="tag">&lt;/strong&gt;</span><span class="pln">
+		</span><span class="tag">&lt;em&gt;</span><span class="pln">Italicized</span><span class="tag">&lt;/em&gt;</span><span class="pln">
+		</span><span class="tag">&lt;a&gt;</span><span class="pln">Colored</span><span class="tag">&lt;/a&gt;</span><span class="pln">
+		</span><span class="tag">&lt;u&gt;</span><span class="pln">Underlined</span><span class="tag">&lt;/u&gt;</span></code>
+		</pre> -->
+				<!-- ————————————————————————————————————————————————————— -->
+		    </div>
+				<div class="docs-section" id="typography">
+					<h6 class="docs-header">Table (with lines)</h6>
+					<div class="row">
+						<table class="one whole sans-serif">
+						  <thead>
+						    <tr>
+						      <th>Name</th>
+						      <th>Age</th>
+						      <th>Sex</th>
+						      <th>Location</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>Dave Gamache</td>
+						      <td>26</td>
+						      <td>Male</td>
+						      <td>San Francisco</td>
+						    </tr>
+						    <tr>
+						      <td>Dwayne Johnson</td>
+						      <td>42</td>
+						      <td>Male</td>
+						      <td>Hayward</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+				<div class="docs-section" id="typography">
+					<h6 class="docs-header">Tables (without lines)</h6>
+					<div class="row">
+						<table class="one whole sans-serif no-border">
+						  <thead>
+						    <tr>
+						      <th>Name</th>
+						      <th>Age</th>
+						      <th>Sex</th>
+						      <th>Location</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>Dave Gamache</td>
+						      <td>26</td>
+						      <td>Male</td>
+						      <td>San Francisco</td>
+						    </tr>
+						    <tr>
+						      <td>Dwayne Johnson</td>
+						      <td>42</td>
+						      <td>Male</td>
+						      <td>Hayward</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+				<div class="docs-section" id="typography">
+					<h6 class="docs-header">Tables (striped)</h6>
+					<div class="row">
+						<table class="one whole sans-serif striped">
+						  <thead>
+						    <tr>
+						      <th>Name</th>
+						      <th>Age</th>
+						      <th>Sex</th>
+						      <th>Location</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>Dave Gamache</td>
+						      <td>26</td>
+						      <td>Male</td>
+						      <td>San Francisco</td>
+						    </tr>
+						    <tr>
+						      <td>Dwayne Johnson</td>
+						      <td>42</td>
+						      <td>Male</td>
+						      <td>Hayward</td>
+						    </tr>
+						    <tr>
+						      <td>Dwayne Johnson</td>
+						      <td>42</td>
+						      <td>Male</td>
+						      <td>Hayward</td>
+						    </tr>
+						    <tr>
+						      <td>Dwayne Johnson</td>
+						      <td>42</td>
+						      <td>Male</td>
+						      <td>Hayward</td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+				<div class="docs-section" id="typography">
+					<h6 class="docs-header">Tabs</h6>
+				<!-- Standard buttons -->
+					<div class="row">
+						<div class="tabs ipad">
+						  <ul role="tablist">
+						    <li ng-repeat="n in [10] | makeRange">{{n}}</li>
+						  </ul>
+						  <div><h1>{{selectedTab}}</h1></div>
+						</div>
+					</div>
+				</div>
+				<div class="docs-section" id="typography">
+					<h6 class="docs-header">Buttons</h6>
+				<!-- Standard buttons -->
+					<div class="row">
+						<div class="one whole"><a class="button" href="#">Anchor button</a></div>
+						<div class="one whole"><button>Button element</button></div>
+						<div class="one whole"><input type="submit" value="submit input"></div>
+						<div class="one whole"><input type="button" value="button input"></div>
+						<div class="one whole"><a class="button button-primary" href="#">Anchor button</a></div>
+						<div class="one whole"><button class="button-primary">Button element</button></div>
+						<div class="one whole"><input class="button-primary" type="submit" value="submit input"></div>
+						<div class="one whole"><input class="button-primary" type="button" value="button input"></div>
+					</div>
+				</div>
+				<div class="docs-section">
+					<h6 class="docs-header">Forms</h6>
+					<div class="row">
+						<div class="one whole">
+							<form>
+							  <div class="row">
+							    <div class="six columns">
+							      <label for="exampleEmailInput">Your email</label>
+							      <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+							    </div>
+							    <div class="six columns">
+							      <label for="exampleRecipientInput">Reason for contacting</label>
+							      <select class="u-full-width" id="exampleRecipientInput">
+							        <option value="Option 1">Questions</option>
+							        <option value="Option 2">Admiration</option>
+							        <option value="Option 3">Can I get your number?</option>
+							      </select>
+							    </div>
+							  </div>
+							  <label for="exampleMessage">Message</label>
+							  <textarea class="u-full-width" placeholder="Hi Dave …" id="exampleMessage"></textarea>
+							  <label class="example-send-yourself-copy">
+							    <input type="checkbox">
+							    <span class="label-body">Send a copy to yourself</span>
+							  </label>
+							  <input class="button-primary" type="submit" value="Submit">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<script src="js/move.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
